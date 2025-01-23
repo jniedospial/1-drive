@@ -127,4 +127,78 @@ document.getElementById('vehicle-price').addEventListener('input', function () {
         buyerFee = 1000.00;
         virtualBidFee = 0;
     } else if (vehiclePrice <= 10999.99) {
-        buyerFee = 1000.00
+        buyerFee = 1000.00;
+        virtualBidFee = 0;
+    } else if (vehiclePrice <= 11499.99) {
+        buyerFee = 1000.00;
+        virtualBidFee = 0;
+    } else {
+        buyerFee = 1000.00;
+        virtualBidFee = 0;
+    }
+
+    // Obliczanie kosztów całkowitych
+    const gateFee = 95.00;
+    const titleShippingFee = 15.00;
+    const environmentalFee = 15.00;
+    const portShippingFee = 500.00;
+    const freightFee = 1000.00;
+
+    // Suma kosztów
+    const auctionCosts = buyerFee + virtualBidFee + gateFee + titleShippingFee + environmentalFee;
+    const totalSum = vehiclePrice + auctionCosts + portShippingFee + freightFee;
+
+    // Wyświetlanie wyników
+    document.getElementById('auction-costs').textContent = auctionCosts.toFixed(2);
+    document.getElementById('total-sum').textContent = totalSum.toFixed(2);
+
+    // Pokazywanie wyników
+    document.getElementById('auction-costs-display').classList.remove('hidden');
+
+    // Automatyczne ustawianie wartości celnej
+    document.getElementById('customs-value').value = vehiclePrice;
+});
+
+// Kalkulator Celny
+document.getElementById('customs-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const customsValue = parseFloat(document.getElementById('customs-value').value);
+
+    if (isNaN(customsValue) || customsValue <= 0) {
+        alert('Proszę podać poprawną wartość celna!');
+        return;
+    }
+
+    // Pobieranie kursu wymiany USD do EUR (używamy Twojego klucza API)
+    const apiKey = '16f7455b55dc8d1d21691a59';  // Twój klucz API
+    fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`)
+        .then(response => response.json())
+        .then(data => {
+            const usdToEur = data.conversion_rates.EUR;
+
+            // Obliczanie wartości celnej w EUR
+            const customsValueInEur = customsValue * usdToEur;
+
+            // Obliczanie cła (10%) i VAT (21%)
+            const customsDuty = customsValueInEur * 0.10;
+            const customsVat = customsValueInEur * 0.21;
+
+            // Koszt agencji celnej
+            const customsAgency = 500;
+
+            // Suma odprawy celnej
+            const customsTotal = customsDuty + customsVat + customsAgency;
+
+            // Wyświetlanie wyników
+            document.getElementById('customs-duty').textContent = customsDuty.toFixed(2);
+            document.getElementById('customs-vat').textContent = customsVat.toFixed(2);
+            document.getElementById('customs-total').textContent = customsTotal.toFixed(2);
+
+            // Pokazywanie wyników
+            document.getElementById('customs-results').classList.remove('hidden');
+        })
+        .catch(error => {
+            alert('Błąd pobierania kursu wymiany waluty.');
+        });
+});
