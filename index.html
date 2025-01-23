@@ -17,27 +17,26 @@
 
         <div id="results" class="hidden">
             <h2>Wyniki:</h2>
-            <p>
-                <strong>Koszty aukcyjne:</strong>
-                <span class="tooltip">
-                    $<span id="auction-costs"></span>
-                    <span class="tooltip-text">
-                        <ul>
-                            <li>Opłata aukcyjna (Buyer Fee): $<span id="buyer-fee"></span></li>
-                            <li>Opłata za licytację online (Virtual Bid Fee): $<span id="virtual-bid-fee"></span></li>
-                            <li>Opłata za bramę (Gate Fee): $<span id="gate-fee"></span></li>
-                            <li>Opłata za wysyłkę tytułu własności (Title Shipping Fee): $<span id="title-shipping-fee"></span></li>
-                            <li>Opłata środowiskowa (Environmental Fee): $<span id="environmental-fee"></span></li>
-                        </ul>
-                    </span>
-                </span>
-            </p>
-            
-            <!-- Nowe koszty -->
+            <p><strong>Koszty aukcyjne:</strong> $<span id="auction-costs"></span></p>
             <p><strong>Dostawa do portu w USA:</strong> $500</p>
             <p><strong>Fracht:</strong> $1000</p>
-
             <p><strong>Suma: $<span id="total-sum"></span></strong></p>
+        </div>
+
+        <!-- Kalkulator Celny -->
+        <h2>Kalkulator Celny</h2>
+        <form id="customs-form">
+            <label for="customs-value">Wartość celna (USD):</label>
+            <input type="number" id="customs-value" required>
+            <button type="submit">Oblicz odprawę celną</button>
+        </form>
+
+        <div id="customs-results" class="hidden">
+            <h3>Wyniki odprawy celnej:</h3>
+            <p><strong>Cło (10% wartości celnej w EUR):</strong> €<span id="customs-duty"></span></p>
+            <p><strong>VAT (21% wartości celnej w EUR):</strong> €<span id="customs-vat"></span></p>
+            <p><strong>Agencja celna i rozładunek:</strong> €500</p>
+            <p><strong>Suma odprawy celnej:</strong> €<span id="customs-total"></span></p>
         </div>
     </div>
 
