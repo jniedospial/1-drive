@@ -152,15 +152,51 @@ document.getElementById('calculator-form').addEventListener('submit', function (
 
     // Wyświetlanie wyników
     document.getElementById('auction-costs').textContent = auctionCosts.toFixed(2);
-    document.getElementById('buyer-fee').textContent = buyerFee.toFixed(2);
-    document.getElementById('virtual-bid-fee').textContent = virtualBidFee.toFixed(2);
-    document.getElementById('gate-fee').textContent = gateFee.toFixed(2);
-    document.getElementById('title-shipping-fee').textContent = titleShippingFee.toFixed(2);
-    document.getElementById('environmental-fee').textContent = environmentalFee.toFixed(2);
-
-    // Wyświetlanie całkowitej sumy
     document.getElementById('total-sum').textContent = totalSum.toFixed(2);
 
     // Pokazywanie wyników
     document.getElementById('results').classList.remove('hidden');
+});
+
+// Kalkulator Celny
+document.getElementById('customs-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const customsValue = parseFloat(document.getElementById('customs-value').value);
+
+    if (isNaN(customsValue) || customsValue <= 0) {
+        alert('Proszę podać poprawną wartość celną!');
+        return;
+    }
+
+    // Pobieranie kursu wymiany USD do EUR
+    fetch('https://api.exchangeratesapi.io/latest?base=USD')
+        .then(response => response.json())
+        .then(data => {
+            const usdToEur = data.rates.EUR;
+
+            // Obliczanie wartości celnej w EUR
+            const customsValueInEur = customsValue * usdToEur;
+
+            // Obliczanie cła (10%) i VAT (21%)
+            const customsDuty = customsValueInEur * 0.10;
+            const customsVat = customsValueInEur * 0.21;
+
+            // Koszt agencji celnej
+            const customsAgency = 500;
+
+            // Suma odprawy celnej
+            const customsTotal = customsDuty + customsVat + customsAgency;
+
+            // Wyświetlanie wyników
+            document.getElementById('customs-duty').textContent = customsDuty.toFixed(2);
+            document.getElementById('customs-vat').textContent = customsVat.toFixed(2);
+            document.getElementById('customs-total').textContent = customsTotal.toFixed(2);
+
+            // Pokazywanie wyników
+            document.getElementById('customs-results').classList.remove('hidden');
+        })
+        .catch(error => {
+            alert('Błąd pobierania kursu wymiany waluty.');
+        });
 });
