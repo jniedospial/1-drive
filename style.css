@@ -65,10 +65,11 @@ button:hover {
     text-decoration: underline;
 }
 
+/* Tekst dymka */
 .tooltip .tooltip-text {
     display: none; /* Ukryj domyślnie */
     position: absolute;
-    left: 50%; /* Pozycjonowanie względem elementu nadrzędnego */
+    left: 50%;
     transform: translateX(-50%);
     top: 120%; /* Ustawienie poniżej tekstu */
     background: #fff;
@@ -81,8 +82,9 @@ button:hover {
     z-index: 10;
 }
 
+/* Pokaż tooltip po najechaniu */
 .tooltip:hover .tooltip-text {
-    display: block; /* Pokaż tooltip po najechaniu */
+    display: block;
 }
 
 .tooltip-text ul {
