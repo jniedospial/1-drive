@@ -106,8 +106,8 @@ document.getElementById('vehicle-price').addEventListener('input', function () {
     const deliveryCost = 500.00;
     const freightCost = 1000.00;
 
-    // Suma: Koszt aukcji + dostawa + fracht
-    const totalSum = auctionCosts + deliveryCost + freightCost;
+    // Suma: Koszt aukcji + cena pojazdu + dostawa + fracht
+    const totalSum = vehiclePrice + auctionCosts + deliveryCost + freightCost;
 
     // Zaktualizowanie wyników
     document.getElementById('auction-costs').textContent = auctionCosts.toFixed(2);
