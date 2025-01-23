@@ -1,47 +1,42 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    margin: 20px;
+    padding: 0;
+    background-color: #f9f9f9;
 }
 
 .container {
-    background-color: #fff;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
-label {
-    margin-top: 10px;
-}
-
-input[type="number"] {
-    padding: 10px;
-    margin-top: 5px;
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
 button {
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #007bff;
+    background-color: #007BFF;
     color: #fff;
+    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -51,10 +46,48 @@ button:hover {
     background-color: #0056b3;
 }
 
-#results {
-    margin-top: 20px;
-}
-
 .hidden {
     display: none;
+}
+
+#results p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.tooltip {
+    position: relative;
+    cursor: pointer;
+    color: #007BFF;
+    text-decoration: underline;
+}
+
+.tooltip:hover .tooltip-text {
+    display: block;
+}
+
+.tooltip-text {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 20px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.tooltip-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tooltip-text li {
+    font-size: 14px;
+    margin-bottom: 5px;
 }
