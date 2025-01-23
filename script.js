@@ -45,22 +45,3 @@ document.getElementById('show-auction-details').addEventListener('click', functi
     const auctionDetails = document.getElementById('auction-details');
     auctionDetails.classList.toggle('hidden');
 });
-
-document.getElementById('customs-value').addEventListener('input', function () {
-    const customsValue = parseFloat(document.getElementById('customs-value').value);
-
-    if (isNaN(customsValue) || customsValue <= 0) {
-        document.getElementById('customs-results').classList.add('hidden');
-        return;
-    }
-
-    const customsDuty = customsValue * 0.1; // Cło 10%
-    const customsVAT = customsValue * 0.21; // VAT 21%
-    const customsTotal = customsDuty + customsVAT + 500.00; // Suma odprawy celnej + agencja celna
-
-    document.getElementById('customs-duty').textContent = customsDuty.toFixed(2);
-    document.getElementById('customs-vat').textContent = customsVAT.toFixed(2);
-    document.getElementById('customs-total').textContent = customsTotal.toFixed(2);
-
-    document.getElementById('customs-results').classList.remove('hidden');
-});
