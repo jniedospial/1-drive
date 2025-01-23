@@ -8,36 +8,31 @@
 <body>
     <div class="container">
         <h1>Kalkulator Kosztów Zakupu Pojazdu z USA</h1>
+
+        <!-- Kalkulator Kosztów -->
         <form id="calculator-form">
             <label for="vehicle-price">Cena pojazdu (USD):</label>
-            <input type="number" id="vehicle-price" required>
+            <input type="number" id="vehicle-price" required placeholder="Wpisz cenę pojazdu">
 
-            <button type="submit">Oblicz</button>
+            <div id="auction-costs-display" class="hidden">
+                <p><strong>Koszty aukcyjne: $<span id="auction-costs"></span></strong></p>
+                <p><strong>Suma: $<span id="total-sum"></span></strong></p>
+            </div>
+
+            <button type="submit">Oblicz Koszty</button>
         </form>
 
-        <div id="results" class="hidden">
-            <h2>Wyniki:</h2>
-            <p><strong>Koszty aukcyjne:</strong> $<span id="auction-costs"></span></p>
-            <p><strong>Dostawa do portu w USA:</strong> $500</p>
-            <p><strong>Fracht:</strong> $1000</p>
-            <p><strong>Suma: $<span id="total-sum"></span></strong></p>
-        </div>
-
-        <!-- Kalkulator Celny -->
-        <h2>Kalkulator Celny</h2>
+        <!-- Kalkulator Celnny -->
         <form id="customs-form">
             <label for="customs-value">Wartość celna (USD):</label>
-            <input type="number" id="customs-value" required>
-            <button type="submit">Oblicz odprawę celną</button>
-        </form>
+            <input type="number" id="customs-value" placeholder="Wartość celna" required>
 
-        <div id="customs-results" class="hidden">
-            <h3>Wyniki odprawy celnej:</h3>
-            <p><strong>Cło (10% wartości celnej w EUR):</strong> €<span id="customs-duty"></span></p>
-            <p><strong>VAT (21% wartości celnej w EUR):</strong> €<span id="customs-vat"></span></p>
-            <p><strong>Agencja celna i rozładunek:</strong> €500</p>
-            <p><strong>Suma odprawy celnej:</strong> €<span id="customs-total"></span></p>
-        </div>
+            <div id="customs-results" class="hidden">
+                <p><strong>Cło (10%): €<span id="customs-duty"></span></strong></p>
+                <p><strong>VAT (21%): €<span id="customs-vat"></span></strong></p>
+                <p><strong>Suma odprawy celnej: €<span id="customs-total"></span></strong></p>
+            </div>
+        </form>
     </div>
 
     <script src="script.js"></script>
