@@ -66,11 +66,11 @@ button:hover {
 }
 
 .tooltip .tooltip-text {
-    display: none; /* Ukryty domyślnie */
+    display: none; /* Ukryj domyślnie */
     position: absolute;
-    left: 50%;
+    left: 50%; /* Pozycjonowanie względem elementu nadrzędnego */
     transform: translateX(-50%);
-    top: 120%; /* Pozycjonowanie poniżej elementu */
+    top: 120%; /* Ustawienie poniżej tekstu */
     background: #fff;
     color: #333;
     border: 1px solid #ccc;
