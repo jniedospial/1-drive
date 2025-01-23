@@ -165,15 +165,16 @@ document.getElementById('customs-form').addEventListener('submit', function (eve
     const customsValue = parseFloat(document.getElementById('customs-value').value);
 
     if (isNaN(customsValue) || customsValue <= 0) {
-        alert('Proszę podać poprawną wartość celną!');
+        alert('Proszę podać poprawną wartość celna!');
         return;
     }
 
-    // Pobieranie kursu wymiany USD do EUR
-    fetch('https://api.exchangeratesapi.io/latest?base=USD')
+    // Pobieranie kursu wymiany USD do EUR (używamy Twojego klucza API)
+    const apiKey = '16f7455b55dc8d1d21691a59';  // Twój klucz API
+    fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`)
         .then(response => response.json())
         .then(data => {
-            const usdToEur = data.rates.EUR;
+            const usdToEur = data.conversion_rates.EUR;
 
             // Obliczanie wartości celnej w EUR
             const customsValueInEur = customsValue * usdToEur;
