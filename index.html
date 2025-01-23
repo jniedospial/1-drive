@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator</title>
+    <title>Kalkulator Kosztów</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Kalkulator</h1>
+    <h1>Kalkulator Kosztów Pojazdu</h1>
     <div class="calculator">
-        <input id="a" type="number" placeholder="Wartość A">
-        <input id="b" type="number" placeholder="Wartość B">
-        <button onclick="calculate()">Dodaj</button>
-        <p>Wynik: <span id="result">0</span></p>
+        <label for="vehiclePrice">Cena pojazdu ($):</label>
+        <input id="vehiclePrice" type="number" placeholder="Wpisz cenę pojazdu">
+        
+        <button onclick="calculateCosts()">Oblicz Koszty</button>
+
+        <h2>Wynik</h2>
+        <p>Koszty aukcyjne (Buyer Fee): <span id="buyerFee">0</span> $</p>
+        <p>Opłata za wirtualne licytacje (Virtual Bid Fee): <span id="virtualBidFee">0</span> $</p>
+        <p>Opłata stale gate: <span id="staleGateFee">95</span> $</p>
+        <p>Opłata za wysyłkę tytułu: <span id="titleShippingFee">15</span> $</p>
+        <p>Opłata środowiskowa: <span id="environmentalFee">15</span> $</p>
+        <p>Dostawa do portu (USA): <span id="deliveryFee">500</span> $</p>
+        <h3>Łączny koszt: <span id="totalCost">0</span> $</h3>
     </div>
     <script src="script.js"></script>
 </body>
