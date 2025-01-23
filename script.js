@@ -106,11 +106,15 @@ document.getElementById('vehicle-price').addEventListener('input', function () {
     const deliveryCost = 500.00;
     const freightCost = 1000.00;
 
+    // Suma bazowa: Koszt aukcji + cena pojazdu + dostawa + fracht
+    const baseSum = vehiclePrice + auctionCosts + deliveryCost + freightCost;
+
     // Suma: Koszt aukcji + cena pojazdu + dostawa + fracht
-    const totalSum = vehiclePrice + auctionCosts + deliveryCost + freightCost;
+    const totalSum = baseSum;
 
     // Zaktualizowanie wyników
     document.getElementById('auction-costs').textContent = auctionCosts.toFixed(2);
+    document.getElementById('base-sum').textContent = baseSum.toFixed(2); // Suma bazowa
     document.getElementById('total-sum').textContent = totalSum.toFixed(2);
 
     // Zaktualizowanie szczegółów
@@ -158,11 +162,6 @@ document.getElementById('customs-value').addEventListener('input', function () {
     document.getElementById('customs-sum').textContent = customsSum.toFixed(2);
 
     // Zaktualizowanie sumy wszystkich kosztów (z uwzględnieniem odprawy celnej)
-    const finalTotal = totalSum + customsSum; // Dodajemy do sumy wszystkich kosztów
+    const finalTotal = baseSum + customsSum; // Dodajemy wartość cła i VAT do sumy bazowej
     document.getElementById('total-sum').textContent = finalTotal.toFixed(2);
-});
-
-document.getElementById('show-auction-details').addEventListener('click', function () {
-    const auctionDetails = document.getElementById('auction-details');
-    auctionDetails.classList.toggle('hidden');
 });
