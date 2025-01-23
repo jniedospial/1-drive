@@ -16,10 +16,19 @@
             
             <div id="auction-costs-display" class="hidden">
                 <p><strong>Koszty aukcyjne: $<span id="auction-costs"></span></strong></p>
-                <p><strong>Suma: $<span id="total-sum"></span></strong></p>
+                <div id="auction-details" class="hidden">
+                    <ul>
+                        <li>Opłata aukcyjna (Buyer Fee): $<span id="buyer-fee"></span></li>
+                        <li>Opłata za licytację online (Virtual Bid Fee): $<span id="virtual-bid-fee"></span></li>
+                        <li>Opłata za bramę (Gate Fee): $<span id="gate-fee"></span></li>
+                        <li>Opłata za wysyłkę tytułu własności (Title Shipping Fee): $<span id="title-shipping-fee"></span></li>
+                        <li>Opłata środowiskowa (Environmental Fee): $<span id="environmental-fee"></span></li>
+                    </ul>
+                </div>
+                <button type="button" id="show-auction-details">Pokaż szczegóły kosztów aukcyjnych</button>
             </div>
 
-            <button type="submit">Oblicz Koszty</button>
+            <p><strong>Suma: $<span id="total-sum"></span></strong></p>
         </form>
 
         <!-- Kalkulator Celnny -->
