@@ -123,6 +123,45 @@ document.getElementById('vehicle-price').addEventListener('input', function () {
     document.getElementById('auction-costs-display').classList.remove('hidden');
 });
 
+// Kalkulator celny
+document.getElementById('customs-value').addEventListener('input', function () {
+    const customsValue = parseFloat(document.getElementById('customs-value').value);
+    const vehicleType = document.getElementById('vehicle-type').value;
+    const vatPort = document.getElementById('vat-port').value;
+
+    if (isNaN(customsValue) || customsValue <= 0) {
+        return;
+    }
+
+    // Kurs wymiany (przykładowy, można pobrać dynamicznie)
+    const exchangeRate = 1.1; // Przykładowy kurs USD do EUR
+
+    const customsValueEUR = customsValue / exchangeRate; // Przeliczenie wartości na EUR
+
+    // Cło
+    const customsDutyRate = vehicleType === 'car' ? 0.10 : 0.06; // 10% dla samochodów, 6% dla motocykli
+    const customsDuty = customsValueEUR * customsDutyRate;
+
+    // VAT
+    const vatRate = vatPort === 'rotterdam' ? 0.21 : 0.19; // 21% VAT dla Rotterdamu, 19% dla Bremerhaven
+    const vat = customsValueEUR * vatRate;
+
+    // Agencja celna
+    const customsAgencyFee = 500.00; // Agencja celna w EUR
+
+    // Suma odprawy celnej
+    const customsSum = customsDuty + vat + customsAgencyFee;
+
+    // Zaktualizowanie wyników odprawy celnej
+    document.getElementById('customs-fee').textContent = customsDuty.toFixed(2);
+    document.getElementById('vat-fee').textContent = vat.toFixed(2);
+    document.getElementById('customs-sum').textContent = customsSum.toFixed(2);
+
+    // Zaktualizowanie sumy wszystkich kosztów (z uwzględnieniem odprawy celnej)
+    const finalTotal = totalSum + customsSum; // Dodajemy do sumy wszystkich kosztów
+    document.getElementById('total-sum').textContent = finalTotal.toFixed(2);
+});
+
 document.getElementById('show-auction-details').addEventListener('click', function () {
     const auctionDetails = document.getElementById('auction-details');
     auctionDetails.classList.toggle('hidden');
