@@ -148,7 +148,7 @@ document.getElementById('calculator-form').addEventListener('submit', function (
 
     // Suma kosztów
     const auctionCosts = buyerFee + virtualBidFee + gateFee + titleShippingFee + environmentalFee;
-    const totalCost = vehiclePrice + auctionCosts + portShippingFee + freightFee;
+    const totalSum = vehiclePrice + auctionCosts + portShippingFee + freightFee;
 
     // Wyświetlanie wyników
     document.getElementById('auction-costs').textContent = auctionCosts.toFixed(2);
@@ -158,8 +158,8 @@ document.getElementById('calculator-form').addEventListener('submit', function (
     document.getElementById('title-shipping-fee').textContent = titleShippingFee.toFixed(2);
     document.getElementById('environmental-fee').textContent = environmentalFee.toFixed(2);
 
-    // Wyświetlanie całkowitego kosztu
-    document.getElementById('total-cost').textContent = totalCost.toFixed(2);
+    // Wyświetlanie całkowitej sumy
+    document.getElementById('total-sum').textContent = totalSum.toFixed(2);
 
     // Pokazywanie wyników
     document.getElementById('results').classList.remove('hidden');
