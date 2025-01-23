@@ -2,27 +2,32 @@
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalkulator Kosztów</title>
+    <title>Kalkulator Kosztów Zakupu Pojazdu z USA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Kalkulator Kosztów Pojazdu</h1>
-    <div class="calculator">
-        <label for="vehiclePrice">Cena pojazdu ($):</label>
-        <input id="vehiclePrice" type="number" placeholder="Wpisz cenę pojazdu">
-        
-        <button onclick="calculateCosts()">Oblicz Koszty</button>
+    <div class="container">
+        <h1>Kalkulator Kosztów Zakupu Pojazdu z USA</h1>
+        <form id="calculator-form">
+            <label for="vehicle-price">Cena pojazdu (USD):</label>
+            <input type="number" id="vehicle-price" required>
 
-        <h2>Wynik</h2>
-        <p>Koszty aukcyjne (Buyer Fee): <span id="buyerFee">0</span> $</p>
-        <p>Opłata za wirtualne licytacje (Virtual Bid Fee): <span id="virtualBidFee">0</span> $</p>
-        <p>Opłata stale gate: <span id="staleGateFee">95</span> $</p>
-        <p>Opłata za wysyłkę tytułu: <span id="titleShippingFee">15</span> $</p>
-        <p>Opłata środowiskowa: <span id="environmentalFee">15</span> $</p>
-        <p>Dostawa do portu (USA): <span id="deliveryFee">500</span> $</p>
-        <h3>Łączny koszt: <span id="totalCost">0</span> $</h3>
+            <button type="submit">Oblicz</button>
+        </form>
+
+        <div id="results" class="hidden">
+            <h2>Wyniki:</h2>
+            <p>Buyer Fee: $<span id="buyer-fee"></span></p>
+            <p>Virtual Bid Fee: $<span id="virtual-bid-fee"></span></p>
+            <p>Gate Fee: $<span id="gate-fee"></span></p>
+            <p>Title Shipping Fee: $<span id="title-shipping-fee"></span></p>
+            <p>Environmental Fee: $<span id="environmental-fee"></span></p>
+            <p>Opłata za dostawę do portu w USA: $<span id="delivery-fee"></span></p>
+            <p><strong>Łączny koszt dodatkowy: $<span id="total-additional-cost"></span></strong></p>
+            <p><strong>Całkowity koszt pojazdu: $<span id="total-cost"></span></strong></p>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
