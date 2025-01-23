@@ -32,7 +32,29 @@
 
             <p><strong>Dostawa do portu w USA:</strong> $500.00</p>
             <p><strong>Fracht:</strong> $1000.00</p>
-            <p><strong>Suma:</strong> $<span id="total-sum">0.00</span></p>
+
+            <h2>Kalkulator Celny</h2>
+            <label for="customs-value">Wartość celna (USD):</label>
+            <input type="number" id="customs-value" required placeholder="Wpisz wartość celną">
+
+            <label for="vehicle-type">Typ pojazdu:</label>
+            <select id="vehicle-type">
+                <option value="car">Samochód (10% Cło)</option>
+                <option value="motorcycle">Motocykl (6% Cło)</option>
+            </select>
+
+            <label for="vat-port">Port docelowy:</label>
+            <select id="vat-port">
+                <option value="rotterdam">Rotterdam (21% VAT)</option>
+                <option value="bremerhaven">Bremerhaven (19% VAT)</option>
+            </select>
+
+            <p><strong>Cło:</strong> $<span id="customs-fee">0.00</span></p>
+            <p><strong>VAT:</strong> $<span id="vat-fee">0.00</span></p>
+            <p><strong>Agencja celna i rozładunek:</strong> €500.00</p>
+            <p><strong>Suma odprawy celnej:</strong> €<span id="customs-sum">0.00</span></p>
+
+            <p><strong>Suma wszystkich kosztów (z uwzględnieniem odprawy celnej):</strong> $<span id="total-sum">0.00</span></p>
         </form>
     </div>
 
