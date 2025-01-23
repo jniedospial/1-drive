@@ -140,28 +140,33 @@ document.getElementById('customs-value').addEventListener('input', function () {
     // Kurs wymiany (przykładowy, można pobrać dynamicznie)
     const exchangeRate = 1.1; // Przykładowy kurs USD do EUR
 
-    const customsValueEUR = customsValue / exchangeRate; // Przeliczenie wartości na EUR
+    const customsValueEUR = customsValue / exchangeRate; // Przeliczenie na EUR
 
-    // Cło
-    const customsDutyRate = vehicleType === 'car' ? 0.10 : 0.06; // 10% dla samochodów, 6% dla motocykli
-    const customsDuty = customsValueEUR * customsDutyRate;
+    let customsFee, vatFee;
 
-    // VAT
-    const vatRate = vatPort === 'rotterdam' ? 0.21 : 0.19; // 21% VAT dla Rotterdamu, 19% dla Bremerhaven
-    const vat = customsValueEUR * vatRate;
+    // Obliczanie cła
+    if (vehicleType === 'car') {
+        customsFee = customsValue * 0.10; // 10% cło dla samochodów
+    } else if (vehicleType === 'motorcycle') {
+        customsFee = customsValue * 0.06; // 6% cło dla motocykli
+    }
 
-    // Agencja celna
-    const customsAgencyFee = 500.00; // Agencja celna w EUR
+    // Obliczanie VAT
+    if (vatPort === 'rotterdam') {
+        vatFee = customsValue * 0.21; // 21% VAT dla Rotterdamu
+    } else if (vatPort === 'bremerhaven') {
+        vatFee = customsValue * 0.19; // 19% VAT dla Bremerhaven
+    }
 
-    // Suma odprawy celnej
-    const customsSum = customsDuty + vat + customsAgencyFee;
+    // Obliczanie sumy odprawy celnej
+    const customsSum = customsFee + vatFee + 500; // Dodajemy agencję celną i rozładunek
 
-    // Zaktualizowanie wyników odprawy celnej
-    document.getElementById('customs-fee').textContent = customsDuty.toFixed(2);
-    document.getElementById('vat-fee').textContent = vat.toFixed(2);
+    // Zaktualizowanie wyników
+    document.getElementById('customs-fee').textContent = customsFee.toFixed(2);
+    document.getElementById('vat-fee').textContent = vatFee.toFixed(2);
     document.getElementById('customs-sum').textContent = customsSum.toFixed(2);
 
-    // Zaktualizowanie sumy wszystkich kosztów (z uwzględnieniem odprawy celnej)
-    const finalTotal = baseSum + customsSum; // Dodajemy wartość cła i VAT do sumy bazowej
-    document.getElementById('total-sum').textContent = finalTotal.toFixed(2);
+    // Zaktualizowanie sumy całkowitej
+    const finalSum = customsSum + baseSum; // Dodajemy sumę odprawy celną do sumy bazowej
+    document.getElementById('total-sum').textContent = finalSum.toFixed(2);
 });
