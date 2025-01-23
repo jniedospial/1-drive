@@ -17,14 +17,22 @@
 
         <div id="results" class="hidden">
             <h2>Wyniki:</h2>
-            <p>Buyer Fee: $<span id="buyer-fee"></span></p>
-            <p>Virtual Bid Fee: $<span id="virtual-bid-fee"></span></p>
-            <p>Gate Fee: $<span id="gate-fee"></span></p>
-            <p>Title Shipping Fee: $<span id="title-shipping-fee"></span></p>
-            <p>Environmental Fee: $<span id="environmental-fee"></span></p>
-            <p>Opłata za dostawę do portu w USA: $<span id="delivery-fee"></span></p>
-            <p><strong>Łączny koszt dodatkowy: $<span id="total-additional-cost"></span></strong></p>
-            <p><strong>Całkowity koszt pojazdu: $<span id="total-cost"></span></strong></p>
+            <p>
+                <strong>Koszty aukcyjne:</strong>
+                <span class="tooltip">
+                    $<span id="auction-costs"></span>
+                    <span class="tooltip-text">
+                        <ul>
+                            <li>Opłata aukcyjna (Buyer Fee): $<span id="buyer-fee"></span></li>
+                            <li>Opłata za licytację online (Virtual Bid Fee): $<span id="virtual-bid-fee"></span></li>
+                            <li>Opłata za bramę (Gate Fee): $<span id="gate-fee"></span></li>
+                            <li>Opłata za wysyłkę tytułu własności (Title Shipping Fee): $<span id="title-shipping-fee"></span></li>
+                            <li>Opłata środowiskowa (Environmental Fee): $<span id="environmental-fee"></span></li>
+                        </ul>
+                    </span>
+                </span>
+            </p>
+            <p><strong>Łączny koszt pojazdu: $<span id="total-cost"></span></strong></p>
         </div>
     </div>
 
